@@ -21,7 +21,7 @@ The Worker currently uses `gemini-3.6-flash`. Gemini free-tier access has model-
 
 ## 2. Deploy the Cloudflare Worker
 
-The API workflow registers the account `workers.dev` subdomain `vontex-lokesh2742` if the Cloudflare account has not registered one yet. The Worker URL will be `https://vontex-api.vontex-lokesh2742.workers.dev`.
+The deployment workflow registers the account `workers.dev` subdomain `vontex-lokesh2742` if the Cloudflare account does not already have one. The Worker URL is `https://vontex-api.vontex-lokesh2742.workers.dev`.
 
 Install Node.js, then open PowerShell or a terminal in the repository folder:
 
