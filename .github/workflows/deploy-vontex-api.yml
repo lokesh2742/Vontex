@@ -57,6 +57,8 @@ jobs:
 
       - name: Configure Gemini API secret
         env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           set -euo pipefail
@@ -65,6 +67,8 @@ jobs:
 
       - name: Configure VONtex access secret
         env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           VONTEX_ACCESS_KEY: ${{ secrets.VONTEX_ACCESS_KEY }}
         run: |
           set -euo pipefail
