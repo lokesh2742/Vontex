@@ -1,0 +1,6 @@
+name = "vontex-api"
+main = "src/index.js"
+compatibility_date = "2026-11-03"
+
+[observability]
+enabled = true
