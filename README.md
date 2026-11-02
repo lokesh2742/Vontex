@@ -9,7 +9,7 @@ A personal AI workspace. The static frontend is hosted on GitHub Pages; Gemini r
 - `worker/wrangler.toml`: Wrangler deployment configuration.
 - Browser local storage: chat history, memory notes, settings, and the Worker access key.
 
-The first backend release supports text chat and passes saved memory notes as context. It does not yet provide web search, file-content understanding, autonomous actions, account login, or cross-device sync.
+The backend supports text chat, optional Gemini Google Search grounding with source links, and one attached PDF or text-based document per message. Saved memory notes are passed as context. It does not provide autonomous actions, account login, or cross-device sync.
 
 ## 1. Create a Gemini API key
 
@@ -82,6 +82,8 @@ The health check confirms that the Worker is reachable and whether its secrets e
 - The Gemini API key is stored as a Cloudflare Worker secret and is not exposed to the browser.
 - The app access key is a lightweight shared-secret gate, not full user authentication. Anyone who knows it can use your Worker quota. Do not share it.
 - The access key is stored in this browser's local storage when you save Settings. Avoid using shared/public computers.
+- Web research uses Gemini's Google Search grounding when you turn it on for a message. Search results can use additional quota and are returned with source links.
+- Attached PDFs and text files are sent to Gemini through the Worker for that request. Attachments are not stored in chat history; the local chat stores the message and filename only. The app accepts one PDF, TXT, Markdown, CSV, or JSON file up to 5 MB per message.
 - The Worker only accepts requests from the configured GitHub Pages origin and local development origins listed in `worker/src/index.js`. Update `ALLOWED_ORIGINS` if you use a custom domain.
 - Gemini's free tier has quotas and its data-use terms differ from paid tiers. Avoid sending sensitive personal, financial, medical, or confidential information.
 - GitHub Pages is static hosting; it cannot safely store private API keys or run this backend.
@@ -110,3 +112,4 @@ The local frontend origin `http://localhost:5500` is allowed by default.
 3. Persistent database-backed memory and chat sync.
 4. Tool calling with explicit approval before actions.
 5. Web research, coding tools, and sandboxed execution.
+
